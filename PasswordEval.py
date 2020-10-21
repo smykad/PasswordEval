@@ -48,13 +48,14 @@ def valid_password(password):
 
     obfuscated_pw = obfuscate(password)
 
+    password_len = len(password)
     # A loop to determine the validity of the password
 
     while True:
 
         #  Check length of password
 
-        if len(password) < 8:
+        if password_len < 8:
             print(f"Your password [{obfuscated_pw}] is too short")
             break
 
@@ -78,7 +79,7 @@ def valid_password(password):
 
         #  Checks for special characters listed
 
-        elif not re.search("[@$!%#?&]", password):
+        elif not re.search("[,'\"!@#$%^&*()-=+_]", password):
             print(f"Your password [{obfuscated_pw}] does not contain special character")
             break
 
@@ -105,6 +106,7 @@ def valid_password(password):
 def main():
     password = user_password()
     valid_password(password)
+    input("Press any key to exit")
 
 
 #   ******************************
